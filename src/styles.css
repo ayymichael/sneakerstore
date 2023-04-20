@@ -30,12 +30,23 @@ header .leftSide {
   align-items: center;
 }
 
-header .leftSide .headerInfo{
-  margin-left: 5px;
+header .leftSide .headerInfo {
+  padding-left: 15px;
+  margin: 0;
+}
+
+header .leftSide .headerInfo p {
+  opacity: 0.5;
+  margin: 0;
+  padding-top: 5px;
+  padding-bottom: 10px;
 }
 
 header h3 {
   font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  padding-top: 10px;
 }
 
 .rightSide {
@@ -54,7 +65,9 @@ header h3 {
 }
 
 .content h2 {
-  text-align: center;
+  padding-left: 30px;
+  font-weight: 500;
+  font-size: 28px;
 }
 
 .content .items {
@@ -104,6 +117,20 @@ header h3 {
   border-radius: 8px;
   height: 32px;
   width: 32px;
+}
+
+.search-block {
+  border: 1px solid #f3f3f3;
+  border-radius: 10px;
+  padding: 0 15px;
+  margin-right: 20px;
+}
+
+.search-block input {
+  border: 0;
+  padding: 13px;
+  font-size: 16px;
+  width: 200px;
 }
 
 .d-flex {
