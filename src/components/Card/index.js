@@ -1,19 +1,41 @@
 import React from 'react';
 import 'macro-css'
 import styles from './Card.module.css'
+import ContentLoader from "react-content-loader"
 
-function Card({onFavorite, onPlus, title, price, imageUrl}) {
-    const [isAdded, setIsAdded] = React.useState(false)
+function Card({ id, onFavorite, onPlus, title, price, imageUrl, favorited = false, added = false, loading=false }) {
+    const [isAdded, setIsAdded] = React.useState(added)
+    const [isFavorited, setIsFavorited] = React.useState(favorited)
 
     const onClickPlus = () => {
-        onPlus({title, price, imageUrl})
+        onPlus({ id, title, price, imageUrl })
         setIsAdded(!isAdded)
     }
 
+    const onClickFavorite = () => {
+        onFavorite({ id, title, price, imageUrl })
+        setIsFavorited(!isFavorited)
+    }
+
     return (
-        <div className={styles.card}>
-            <div className={styles.favorite} onClick={onFavorite}>
-                <img src="/img/unliked.svg" alt="unliked"></img>
+        loading ? 
+        <ContentLoader className={styles.card} 
+        speed={2}
+        width={150}
+        height={265}
+        viewBox="0 0 150 265"
+        backgroundColor="#f3f3f3"
+        foregroundColor="#ecebeb"
+      >
+        <rect x="0" y="0" rx="10" ry="10" width="150" height="90" /> 
+        <rect x="0" y="101" rx="5" ry="5" width="150" height="15" /> 
+        <rect x="0" y="132" rx="5" ry="5" width="100" height="15" /> 
+        <rect x="0" y="161" rx="5" ry="5" width="80" height="25" /> 
+        <rect x="119" y="156" rx="10" ry="10" width="32" height="32" />
+      </ContentLoader>
+       : <div className={styles.card}>
+            <div className={styles.favorite} onClick={onClickFavorite}>
+                <img src={isFavorited ? "/img/liked.svg" : "/img/unliked.svg"} alt="unliked"></img>
             </div>
             <img src={imageUrl} alt="sneaker"></img>
             <h3>{title}</h3>
@@ -22,11 +44,11 @@ function Card({onFavorite, onPlus, title, price, imageUrl}) {
                     <span>Цена:</span>
                     <p>{price} руб.</p>
                 </div>
-                
-                <img 
+
+                <img
                     className={styles.plus}
                     onClick={onClickPlus}
-                    src={isAdded ? '/img/btn-checked.svg' : '/img/btn-plus.svg'} 
+                    src={isAdded ? '/img/btn-checked.svg' : '/img/btn-plus.svg'}
                     alt="plus"
                 />
             </div>

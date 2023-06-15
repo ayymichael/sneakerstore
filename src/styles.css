@@ -53,6 +53,8 @@ header h3 {
   display: flex;
   padding-right: 15px;
   text-align: center;
+  align-items: center;
+  list-style-type: none;
 }
 
 .rightSide p {
@@ -98,6 +100,10 @@ header h3 {
 
 .a-center {
   align-items: center;
+}
+
+.ml-20 {
+  margin-left: 20px;
 }
 
 .mr-20 {
@@ -284,4 +290,10 @@ header h3 {
   right: 30px;
   top: 20px;
   transition: transform 0.15s ease-in-out;
+}
+
+a, a:link, a:visited, a:focus, a:hover, a:active{
+  color:rgb(0, 0, 0);
+  text-decoration:none;
+  cursor: pointer;
 }

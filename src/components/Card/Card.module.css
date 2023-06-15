@@ -37,3 +37,8 @@
 .plus {
   cursor: pointer;
 }
+
+.textcenter {
+  text-align: center;
+  margin-top: 10%;
+}
