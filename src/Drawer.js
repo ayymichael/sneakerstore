@@ -1,4 +1,5 @@
 // import styles from './Drawer.module.css';
+import Info from './components/Info'
 
 function Drawer({ onRemove, onClose, items = [] }) {
   return (
@@ -10,12 +11,12 @@ function Drawer({ onRemove, onClose, items = [] }) {
             cursor: 'pointer'
           }}
             onClick={onClose}
-            src="/img/btn-remove.svg" alt="Close" />
+            src="./img/btn-remove.svg" alt="Close" />
         </h2>
 
         {
           items.length > 0 ? (
-            <div style={{display:'contents'}}>
+            <div style={{ display: 'contents' }}>
               <div className='items'>
                 {
                   items.map((obj) => (
@@ -30,7 +31,7 @@ function Drawer({ onRemove, onClose, items = [] }) {
                         <p>{obj.title}</p>
                         <b>{obj.price} руб.</b>
                       </div>
-                      <img onClick={() => onRemove(obj.id)} className='cartRemove' src='/img/btn-remove.svg' alt='remove'></img>
+                      <img onClick={() => onRemove(obj.id)} className='cartRemove' src='./img/btn-remove.svg' alt='remove'></img>
                     </div>
                   )
                   )
@@ -55,15 +56,7 @@ function Drawer({ onRemove, onClose, items = [] }) {
               </div>
             </div>)
             : (
-              <div className="cartEmpty d-flex a-center justify-center">
-                <img className="mb-20" width='120px' height="120px" src="/img/empty-cart.jpg" alt="CartEmpty"></img>
-                <h2>Корзина пустая</h2>
-                <p>Добавьте хотя бы одну вещь, чтобы сделать заказ</p>
-                <button onClick={onClose} height="20px" className="greenButton">
-                  <img src="/img/arrow.svg" alt="Arrow" />
-                  Вернуться назад
-                </button>
-              </div>
+              <Info title="Корзина пуста(" description="Для оформления заказа добавьте что-нибудь в корзину." image="./img/empty-cart.jpg" />
             )
         }
 

@@ -2,7 +2,6 @@ import Card from '../Card'
 
 function Home({
     items,
-    cartItems,
     searchValue,
     onAddToCart,
     onAddToFavorite,
@@ -20,7 +19,6 @@ function Home({
                 key={isLoading ? index : item.title}
                 onFavorite={obj => onAddToFavorite(obj)}
                 onPlus={obj => onAddToCart(obj)}
-                added={cartItems.some(obj => Number(obj.id) === Number(item.id))}
                 loading={isLoading}
                 {...item}
             />
@@ -35,7 +33,7 @@ function Home({
                 </h2>
 
                 <div className='search-block d-flex'>
-                    <img src='/img/search.svg' alt='search'></img>
+                    <img src='./img/search.svg' alt='search'></img>
                     {searchValue && (
                         <img
                             onClick={() => { setSearchValue("") }}

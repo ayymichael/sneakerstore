@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Header(props) {
   return (
@@ -16,7 +16,7 @@ function Header(props) {
       <ul className="rightSide d-flex">
         <li>
           <Link to="/favorites">
-            <img className="mr-20" width={18} height={18} src="/img/heart.svg" alt="Закладки"></img>
+            <img className="mr-20" width={18} height={18} src="./img/heart.svg" alt="Закладки"></img>
           </Link>
         </li>
         <li>
