@@ -16,6 +16,7 @@ function App() {
   const [cartOpened, setCartOpened] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(true)
 
+  // console.log(JSON.stringify(cartItems))
 
   React.useEffect(() => {
     async function fetchData() {
@@ -32,7 +33,7 @@ function App() {
   }, [])
 
   const onAddToCart = (obj) => {
-    console.log(obj);
+    // console.log(obj);
     try {
       if (cartItems.find(item => Number(item.id) === Number(obj.id))) {
         axios.delete(`https://647f4126c246f166da906efd.mockapi.io/cart/${obj.id}`)
@@ -74,7 +75,7 @@ function App() {
   }
 
   return (
-    <AppContext.Provider value={{ items, cartItems, favorites, isItemAdded, onAddToFavorite, setCartOpened }}>
+    <AppContext.Provider value={{ items, cartItems, favorites, isItemAdded, onAddToFavorite, setCartOpened, setCartItems }}>
       <div className="wrapper">
         {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem} />}
 

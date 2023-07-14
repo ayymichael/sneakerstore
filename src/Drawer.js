@@ -1,7 +1,18 @@
 // import styles from './Drawer.module.css';
+import React from 'react'
 import Info from './components/Info'
+import AppContext from './context'
 
 function Drawer({ onRemove, onClose, items = [] }) {
+  const [isOrderComplete, setIsOrderComplete] = React.useState(false)
+  const { setCartItems, cartItems } = React.useContext(AppContext)
+  const totalPrice = cartItems.reduce((acc, obj) => acc+obj.price, 0)
+
+  const onClickOrder = () => {
+    setIsOrderComplete(true)
+    setCartItems([])
+
+  }
   return (
     <div className="overlay" >
       <div className="drawer">
@@ -43,27 +54,25 @@ function Drawer({ onRemove, onClose, items = [] }) {
                   <li className='d-flex'>
                     <span>Итого:</span>
                     <div></div>
-                    <b>17990 руб.</b>
+                    <b>{totalPrice} руб.</b>
                   </li>
                   <li className='d-flex'>
-                    <span>Скидка:</span>
+                    <span>Скидка (5%):</span>
                     <div></div>
-                    <b>0 руб.</b>
+                    <b>{totalPrice*0.05} руб.</b>
                   </li>
                 </ul>
-                <button>Оформить заказ</button>
+                <button onClick={onClickOrder}>Оформить заказ</button>
 
               </div>
             </div>)
             : (
-              <Info title="Корзина пуста(" description="Для оформления заказа добавьте что-нибудь в корзину." image="./img/empty-cart.jpg" />
+              <Info 
+                title={isOrderComplete ? "Заказ оформлен!" : "Корзина пустая("} 
+                description={isOrderComplete ? "Ваш заказ скоро будет передан для подтверждения" : "Для оформления заказа добавьте что-нибудь в корзину."} 
+                image={isOrderComplete ? "./img/complete-order.jpg" : "./img/empty-cart.jpg"} />
             )
         }
-
-
-
-
-
       </div>
     </div>
   )
